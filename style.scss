@@ -2,12 +2,17 @@
 @mixin raleway {
     font-family: 'Raleway', sans-serif;
 }
+@import url('https://fonts.googleapis.com/css?family=Aleo:400,700&display=swap');
+@mixin aleo {
+font-family: 'Aleo', serif;
+}
 .h100{
     height: 100%;
 }
 .header-container{
-    padding-bottom: 15vh;
-    background-color: antiquewhite;
+    padding-bottom: 10vh;
+    background-color: #f6f2f2;
+
 }
     /* -- nav --- */
 
@@ -31,10 +36,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: cubic-bezier(0.1, 1, 0.5, 1) all 1s;
 
 }
 .header-block__nav-menu:hover{
-    background-color: #ff3f40;
+    background-color: #e62828;
 }
 /* ----info ----- */
 
@@ -65,19 +71,36 @@
     color: white;
     border: 0;
     border-radius: 10px;
+    transition: cubic-bezier(0, 1, 0.5, 1) all 2s;
     background-color: #ff3f40;
+    &:hover{
+        transform: scale(1.1,1.1);
+       
+    }
 }
 
-.header-block__img{
-    background-color: yellowgreen;
-    height: 350px;
+.header-block{
+    &__img-block{
+    height: 450px;
+    width: 100%;
+    text-align: center;
+    @media screen and (max-width:576px){
+        height:auto;
+      }
+    }
+    &__img{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border: 20px #f5f0dd solid;
+    }
 }
 
 
 .project{
     &-container{
         padding-top: 105px;
-        padding-bottom: 105px;
+        padding-bottom: 40px;
     }
     &__title{
         @include raleway;
@@ -102,28 +125,169 @@
         width: 100%;
         height: 100%;
         text-align: center;
-        background-color: #fff;
         border: 0;
+        background-color: transparent;
+        @include aleo;
+        font-size: 22px;
+        font-weight: bold;
+        opacity: 0.7;
+        &:focus{
+            outline: none;
+        }
+        &--active{
+            color: orange;
+        }
     }
     &__preview--hidden{
             display: none;
     }
-    &__preview-first{
-        background-color: khaki;
+    &__preview{
+        &:hover .preview__img:not(:hover){
+            filter: brightness(70%);
+         }
+         &:hover .preview__img{
+            filter: brightness(100%);
     }
-    &__preview-second{
-        background-color: lawngreen;
-    }
-    &__preview-third{
-        background-color: lightcoral;
     }
 
 }
 .preview{
     &__item{
-        background-color: green;
+        background-color: #f5f0dd;
         height: 180px;
         max-height: 40vh;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        transition: linear all .4s;
+        position: relative;
+            &:hover{
+            padding: 0;
+        }
+        &:hover .preview__text{
+            opacity: 1;
+            transform: scaleY(1);
+        }
+
+      
+       }
+       &__link{
+        color: white;
+        &:visited{
+            color: white;
+        }
+        &:link{
+         color: white;
+     }
+ 
+    }
+    &__img{
+        transition: linear all .4s;
+        max-width: 100%;
+        object-fit: cover;
+  
+}
+    &__text{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform-origin: bottom;
+        transform: scaleY(0);
+        transition: linear all .4s;
+        opacity: 0;
+        width: 100%;
+        height: 25%;
+        background-color: #313131be;
+        bottom: 0px;
+        text-align: center;
+        padding: 0;
+        margin:0;
+        position: absolute;
     }
 }
 
+.contacts{
+    &-container{
+        padding-top: 100px;
+        padding-bottom: 100px;
+        background-color: #f6f2f2;
+    }
+    &__line{
+        height: 70px;
+        margin-top: 40px;
+        @media screen and (max-width:768px){
+            display: none;
+        }
+    }
+    &__input{
+        width: 100%;
+        height: 55px;
+        border: 0;
+        border-radius: 10px;
+        padding-left: 20px;
+        background-color: #e5e5e5;
+       
+    }
+    &__message{
+        width: 100%;
+        margin-top: 30px;
+        background-color: #e5e5e5;
+        border-radius: 10px;
+        border: 0;
+        padding-top: 30px;
+        padding-left: 20px;
+       
+    }
+    &__button{
+        margin-top: 30px;
+        width: 100%;
+        height: 55px;
+        font-size: 17px;
+        letter-spacing: 2px;
+        color: white;
+        font-weight: bold;
+        border: 0;
+        border-radius: 10px;
+        background-color: #ff3f40;
+
+    }
+    &__info{
+        &-title{
+            line-height: 60px;
+            font-size: 20px;
+            @include aleo;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.712);
+        }
+        &-text{
+            font-size: 17px;
+            @include aleo;
+            color: rgba(255, 255, 255, 0.712);
+        }
+        padding-right: 20px;
+        border-radius: 20px;
+        padding-left: 70px;
+        padding-bottom: 140px;
+        padding-top: 140px;
+        background-color: #2d2d2df1;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.452);
+        @media screen and (max-width:768px){
+            padding-bottom: 40px;
+        padding-top: 40px;
+        padding-left: 20px;
+
+        }
+    }
+}
+.footer{
+    &-container{
+        background-color: #313030;
+        padding-top: 50px;
+        padding-bottom: 35px;
+    }
+    &__text{
+        font-size: 16px;
+        @include aleo;
+        color: rgba(255, 255, 255, 0.678);
+    }
+}
