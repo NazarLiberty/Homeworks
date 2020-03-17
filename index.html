@@ -15,6 +15,13 @@
     <header class="container-fluid header-container">
         <div class="container-xl header-block">
             <ul class="row justify-content-center header-block__nav">
+                <div class="col-4 offset-8 header-block__burger">
+                    <div id="burger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
                 <a href="#" class="col-lg-2 col-sm-3 header-block__nav-menu">
                     <li>HOME</li>
                 </a>
@@ -521,6 +528,16 @@
         crossorigin="anonymous"></script>
     <script>
         $(document).ready(function () {
+            $(".header-block__burger").on("click", () => {
+                $(".header-block__nav-menu").toggleClass("header-block__nav-menu--open");
+            });
+            $(".header-block__burger").on("click", () => {
+                $(".header-block__nav").toggleClass("header-block__nav--open");
+            });
+            // burger animation
+            $('#burger').click(function () {
+                $(this).toggleClass('open');
+            });
             // hide
             $(".project__filter-hide").on("click", () => {
                 $(".project__preview").addClass("project__preview--hidden");
